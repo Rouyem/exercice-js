@@ -86,6 +86,15 @@
     else {
       document.getElementById('errorprenom').innerHTML="";
     }
+    var date = document.getElementById("date");
+    if (date.value == "")
+    { 
+      document.getElementById('errordate').innerHTML="La date de naissance doit impérativement être au format dd-mm-yyyy";
+      event.preventDefault();
+    }
+    else {
+      document.getElementById('errorlieu').innerHTML="";
+    }
     var lieu = document.getElementById("lieu");
     if (lieu.value == "")
     { 

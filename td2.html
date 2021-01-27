@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TD 2</title>
+</head>
+<body>
+  <label>Somme a régler:</label>
+  <input type="text" id="aregler">
+  <br><br>
+  <label>Somme reçu:</label>
+  <input type="text" id="reçu">
+  <br><br>
+  <div id="message"></div>
+  <br><br>
+  <button onclick="argent()">Total</button>
+
+  <script>
+    function argent()
+    {
+      var nb1 = document.getElementById("aregler").value;
+      var nb2 = document.getElementById("reçu").value;
+      var total;
+      total = nb2 - nb1;
+
+      if (total > 0) {
+        alert("Vous devez au client "+total+" €");
+        document.getElementById("message").innerHTML = "Vous devez au client "+total+" €";
+        document.getElementById("message").style.color = "green";
+      }
+      else {
+        alert("Le client vous doit "+(-total)+" €");
+        document.getElementById("message").innerHTML = "Le client vous doit "+(-total)+" €";
+        document.getElementById("message").style.color = "green";
+      }
+    }
+  </script>
+</body>
+</html>
