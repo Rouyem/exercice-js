@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>exo3</title>
+</head>
+<body>
+  <h1>Exercice 3</h1>
+  <p>
+    Ecrire le code HTML et JS de l’énoncé suivante :<br>Un commercant souhaite avoir une calculatrice permettant de calculer le prix ttc d’un produit ou le prix ht.<br>Il devra alors saisir le prix, et choisir dans un menu déroulant le type de prix si le prix qu’il a saisi est un prix ht ou un prix ttc.<br>Le prix ne peut pas être null, si c’est le cas il faudra afficher un message d’erreur demandant à l’utilisateur de le saisir<br>Le type de prix ne peut pas être null, si c’est le cas il faudra afficher un message d’erreur demandant à l’utilisateur de le sélectionner<br>En fonction de certains produits, le taux de TVA change (10% ou 20%), il faudra également un menu déroulant permettant de le sélectionner.Le taux de tva ne peut pas être null, si c’est le cas il faudra afficher un message d’erreur demandant à l’utilisateur de le sélectionner<br>Il suffira ensuite d’afficher dans un div le prix avec soit ht soit ttc<br>
+  </p>
+  <form>
+    <label>Prix</label>
+    <div id="erreurPrix"></div>
+    <input type="text" name="prix" id="prix" onblur="calcul()">
+    <br>
+    <label>Type de prix</label>
+    <div id="erreurType"></div>
+    <select id="type" onchange="calcul()">
+        <option value="">Choisissez un type de prix</option>
+        <option value="ht">HT</option>
+        <option value="ttc">TTC</option>
+     </select>
+    <br>
+     <label>Taux de TVA</label>
+     <div id="erreurTva"></div>
+     <select id="tva" onchange="calcul()">
+         <option value="">Choisissez un taux de tva</option>
+         <option value="10">10%</option>
+         <option value="20">20%</option>
+      </select>
+    <br><br>
+   
+    <button type="button" id="btn" onclick="calculReq()" style="display:none" >Calculer le prix</button>
+    
+  </form>
+  <div id="result"></div>
+  <style>
+    .error
+    {
+        color:red;
+    }
+    .success
+    {
+        color:green;
+    }
+  </style>
+  <script>
+  function calcul()
+  {
+      var prix = document.getElementById('prix').value;
+      var type = document.getElementById('type').value;
+      var tva = document.getElementById('tva').value;
+      if(prix == '')
+      {
+          document.getElementById('erreurPrix').innerHTML='Veuillez saisir le prix';
+          document.getElementById('erreurPrix').classList.add('error');
+      }
+      else
+      {
+          document.getElementById('erreurPrix').style.innerHTML="";
+      }
+      if(type == '')
+      {
+          document.getElementById('erreurType').innerHTML='Veuillez sélectionner le type de prix';
+          document.getElementById('erreurType').classList.add('error');
+      }
+      else
+      {
+          document.getElementById('erreurType').innerHTML="";
+      }
+      if(tva == '')
+      {
+          document.getElementById('erreurTva').innerHTML='Veuillez sélectionner le taux de TVA';
+          document.getElementById('erreurTva').classList.add('error');
+      }
+      else
+      {
+          document.getElementById('erreurTva').innerHTML="";
+      }
+      if(prix != '' && type !='' && tva != '')
+      {
+          document.getElementById('btn').style.display="block";
+      }
+      
+  }
+  function calculReq()
+  {
+      var prix = document.getElementById('prix').value;
+      var type = document.getElementById('type').value;
+      var tva = document.getElementById('tva').value;
+      var taux = (1+(tva/100));
+      var result;
+      if(type == 'ht')
+      {
+          result = prix*taux;
+          typeNew = 'TTC'; 
+      }
+      else
+      {
+          result = prix/taux;
+          typeNew = 'HT'; 
+      }
+      document.getElementById('result').innerHTML="Le prix sera donc "+Math.round(result)+" "+typeNew;
+      document.getElementById('result').classList.add('success');
+  }
+  </script>
+
+</body>
+</html>
