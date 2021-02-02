@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exo</title>
+</head>
+<body>
+  <label>Votre age</label>
+  <input type="text" id="age">
+  <button onclick="votreage()">valider</button>
+
+  <script>
+    function votreage() {
+      var i;
+      var age=document.getElementById("age").value;
+      for (i=0; i<=75; i++) {
+        console.log(i);
+        if (i == age) {
+          console.log('ceci est mon age '+i);
+          break;
+        }
+      }
+    }
+    
+  </script>
+</body>
+</html>

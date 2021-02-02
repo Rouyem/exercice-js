@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exo</title>
+</head>
+<body>
+  <label>Nom du produit: <span id="erreur"></span></label>
+  <input type="text" id="nom">
+  <br><br>
+  <label>Quantité:</label>
+  <input type="text" id="quantite">
+  <br><br>
+  <label>Prix:</label>
+  <input type="text" id="prix">
+  <br><br>
+  <button type="button" onclick="stocker()">Stocker</button>
+  <div id="nb"></div>
+  <br>
+  <div id="total"></div>
+  
+
+  <script>
+    var produits = [];
+    var montant = 0;
+
+    function stocker() {
+      
+      var quantite = document.getElementById('quantite').value;
+      var prix = document.getElementById('prix').value;
+      var nom = document.getElementById('nom').value;
+      var text = ' ';
+      
+      if(!produits.includes(nom)) {
+        produits.push(nom);
+      }
+      else{
+        document.getElementById('erreur').innerHTML = 'Produit déja en stock';
+        document.getElementById('erreur').style.color = 'red';
+      }
+
+      montant = montant + (quantite*prix);
+      produits.sort();
+
+      for(i=0; i < produits.length; i++) {
+        console.log(produits[i]);
+        text += produits[i]+'<br>';
+      }
+      document.getElementById('nb').innerHTML = 'Produits en stock: <br>' +text;
+      document.getElementById('total').innerHTML = 'Montant total du stock: '+montant+' €';
+      document.getElementById('nom').value='';
+      document.getElementById('quantite').value='';
+      document.getElementById('prix').value='';
+      document.getElementById('nom').focus();
+      document.getElementById('nom').select();
+    }
+  </script>
+</body>
+</html>

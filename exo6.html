@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label>Votre prénom:</label>
+  <input type="text" id="newprenom">
+  <label>Votre nom:</label>
+  <input type="text" id="newnom">
+  <button onclick="nomprenom()">Envoyer</button>
+  <div id="nbprenoms"></div>
+  <div id="nbnoms"></div>
+
+  <script>
+    function nomprenom() {
+      var prenoms = ['Cédric','Bernard','Joseph','Aurélie','Chloé','Anthony','Denis'];
+      var noms = ['Durand','Dupond','Baune','Michel'];
+      var newprenom = document.getElementById('newprenom').value;
+      var newnom = document.getElementById('newnom').value;
+      var i;
+      var text = ' ';
+      var text1 =' ';
+
+      if(newprenom == '') {
+        return false;
+      }
+      if(newnom == '') {
+        return false;
+      }
+
+      if(!prenoms.includes(newprenom)) {
+        prenoms.push(newprenom);
+      }
+      if(!noms.includes(newnom)) {
+        noms.push(newnom);
+      }
+
+      prenoms.sort();
+      noms.sort();
+      noms.reverse();
+      for(i=0; i<prenoms.length; i++) {
+        console.log(prenoms[i]);
+        text += prenoms[i]+'<br>';
+      }
+
+      document.getElementById('nbprenoms').innerHTML = 'Il y a '+prenoms.length+' prénoms dans le tableau, voici les prénoms :<br>'+text;
+
+      for(i=0; i<noms.length; i++) {
+        console.log(noms[i]);
+        text1 += noms[i]+'<br>';
+      }
+
+      document.getElementById('nbnoms').innerHTML = 'Il y a '+noms.length+' noms dans le tableau, voici les noms :<br>'+text1;
+    }
+    
+  </script>
+</body>
+</html>
