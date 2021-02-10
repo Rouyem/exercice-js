@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Ecrire un formulaire avec un champ qui permet de saisir une date de naissance au format français.<br>
+    Lorsque l'on écrit les caractères, faire automatiquement l'auto-complète des « - »<br>
+    Ecrire le script (RegEx) qui permet de vérifier si la date de naissance est correct.<br>
+    Afficher un message quand le format de la date est faux.</p>
+  <label>Date de naissance:</label>
+  <input type="text" name="date" id="date" onkeyup="dateNaiss()">
+  <br><br>
+  <button type="button" onclick="verif()">Vérifier</button>
+  <div id="votreDate"></div>
+
+  <script>
+    function dateNaiss()
+    {
+      var date = document.getElementById('date').value;
+      if(date.length ==2)
+      {
+        var newDate = date + '-';
+        document.getElementById('date').value = newDate;
+      }
+      if(date.length ==5)
+      {
+        var newDate = date + '-';
+        document.getElementById('date').value = newDate;
+      }
+    }
+
+    function verif()
+    {
+      var date = document.getElementById('date').value;
+      var reg=new RegExp("^[0-9]{2}[-][0-9]{2}[-][0-9]{4}$");
+      if(!reg.test(date))
+      {
+        alert("date incorrect")
+        document.getElementById('votreDate').innerHTML = "Votre date de naissance est incorrect"
+      }
+      else{
+        document.getElementById('votreDate').innerHTML = "Votre de date de naissance est le "+date
+      }
+    }
+  </script>
+</body>
+</html>

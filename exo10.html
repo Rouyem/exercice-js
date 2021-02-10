@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Ecrire un formulaire demandant à l'utilisateur de saisir son nom, prénom, date de naissance, adresse
+      email et numéro de téléphone.<br>
+      Ecrire le script qui permettra de vérifier si la date de naissance est bien au format dd-mm-yyyy, si
+      l'email est correct et si le numéro de téléphone comporte bien 10 chiffres.<br>
+      Vérifier si le nom est en majuscule et si la première lettre du prénom est en majuscule.<br>
+      Si les règles ne sont pas respectées, afficher un message d'erreur.</p>
+    <label>Nom:</label><div id="erreurNom"></div>
+    <input type="text" name="nom" id="nom">
+    <br><br>
+    <label>Prénom:</label><div id="erreurPrenom"></div>
+    <input type="text" name="prenom" id="prenom">
+    <br><br>
+    <label>Date de naissance</label><div id="erreurDate"></div>
+    <input type="text" name="date" id="date">
+    <br><br>Adresse email:
+    <label>Adresse email:</label><div id="erreurMail"></div>
+    <input type="text" name="email" id="email">
+    <br><br>
+    <label>Numéro de tél:</label><div id="erreurTel"></div>
+    <input type="text" name="tel" id="tel">
+    <br><br>
+    <button type="button" onclick="verif()">Envoyer</button>
+
+    <script>
+      function verif()
+      {
+        var nom = document.getElementById('nom').value;
+        var prenom = document.getElementById('prenom').value;
+        var date = document.getElementById('date').value;
+        var email = document.getElementById('email').value;
+        var tel = document.getElementById('tel').value;
+        var nomMajuscule = new RegExp("^[A-Z]+$");
+        var prenomM = new RegExp("^[A-Z]{1}[a-z]+$");
+        var mail = new RegExp('^[a-zA-Z0-9.-_]+@[a-zA-Z0-9-_]+.[a-zA-Z]{2,4}$');
+        var dateN = new RegExp("^[0-9]{2}[-][0-9]{2}[-][0-9]{4}$");
+        var telephone = new RegExp("^[0-9]{10}$");
+
+        if(!nomMajuscule.test(nom))
+        {
+          document.getElementById('erreurNom').innerHTML = "Votre nom n'est pas valide";
+        }
+        else
+        {
+          document.getElementById('erreurNom').innerHTML = " ";
+        }
+        if(!prenomM.test(prenom))
+        {
+          document.getElementById('erreurPrenom').innerHTML = "Votre prénom n'est pas valide";
+        }
+        else
+        {
+          document.getElementById('erreurPrenom').innerHTML = " ";
+        }
+        if(!dateN.test(date))
+        {
+          document.getElementById('erreurDate').innerHTML = "Votre date de naissance n'est pas valide";
+        }
+        else
+        {
+          document.getElementById('erreurDate').innerHTML = " ";
+        }
+        if(!mail.test(email))
+        {
+          document.getElementById('erreurMail').innerHTML = "Votre adresse email n'est pas valide";
+        }
+        else
+        {
+          document.getElementById('erreurMail').innerHTML = " ";
+        }
+        if(!telephone.test(tel))
+        {
+          document.getElementById('erreurTel').innerHTML = "Votre numéro de téléphone n'est pas valide";
+        }
+        else
+        {
+          document.getElementById('erreurTel').innerHTML = " ";
+        }
+
+
+      }
+    </script>
+  </body>
+  </html>
+</body>
+</html>

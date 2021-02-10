@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mot de passe</title>
+</head>
+<body>
+  <label>Mot de passe</label>
+  <input type="text" name="mdp" id="mdp">
+  <button type="button" onclick="verifmdp()">Vérifier</button>
+
+  <script>
+    function verifmdp()
+    {
+      var mdp = document.getElementById('mdp').value;
+      var exp = new RegExp("^[a-zA-Z0-9]{8,12}$","g");
+      if(exp.test(mdp))
+      {
+        alert('Mot de passe valide');
+      }
+      else{
+        alert('Mot de passe invalid');
+      }
+    }
+  </script>
+  
+</body>
+</html>

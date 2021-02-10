@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exo</title>
+</head>
+<body>
+  <label>Nom du produit: <span id="erreur"></span></label>
+  <input type="text" id="nom">
+  <br><br>
+  <label>Quantité:</label>
+  <input type="text" id="quantite">
+  <br><br>
+  <label>Prix:</label>
+  <input type="text" id="prix">
+  <br><br>
+  <button type="button" onclick="stocker()">Stocker</button>
+  <div id="stock"></div>
+  <script>
+    var produits = [];
+    var montant = 0;
+
+    function stocker() {
+      
+      var quantite = document.getElementById('quantite').value;
+      var prix = document.getElementById('prix').value;
+      var nom = document.getElementById('nom').value;
+      var montant = quantite*prix;
+
+      
+      
+      
+     
+  </script>

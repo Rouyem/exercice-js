@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Ecrire un formulaire avec un champ qui permet de saisir une adresse email.<br>
+    Ecrire le script (RegEx) qui permet de vérifier si l'adresse email est correcte.<br>
+    Afficher un message quand elle n'est pas valide.</p>
+    <label>Adresse email:</label>
+    <input type="text" name="mail" id="mail">
+    <br><br>
+    <button type="button" onclick="verifmail()">Vérifier</button>
+    <script>
+      function verifmail()
+      {
+        var mail = document.getElementById('mail').value;
+        var reg = new RegExp('^[a-zA-Z0-9.-_]+@[a-zA-Z0-9-_]+.[a-zA-Z]{2,4}$');
+        if(reg.test(mail))
+        {
+          alert("email correct");
+        }
+        else
+        {
+          alert("email incorrect");
+        }
+      }
+    </script>
+</body>
+</html>
